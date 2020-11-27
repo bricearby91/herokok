@@ -1,0 +1,23 @@
+<div class="card mx-auto my-4 shadow" style="width: 30rem;">
+<img class="card-img" src= "<%= @product.url%>" alt="Card image cap">
+<div class="card-body">
+    <h5 class="card-title"> <%= @product.name%> </h5>
+    <p class="card-text"><%= @product.description%></p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Prix : <%= @product.price%>€</li>
+    
+    <li class="list-group-item">Categorie : <%= @product.category.name%></li>
+  </ul>
+  
+    <div class="card-body">
+      
+      <%= link_to "Retourner au catalogue", products_path,  :class => "btn btn-primary" %>
+      <% if user_signed_in? %>
+				<%= link_to "Ajouter au panier !", product_carts_path(product_id: @product.id), method: :post, class: 'btn btn-primary ml-2 mr-0 text-light' %> 										
+			<% else %>
+        <%= link_to "Au panier !", new_user_session_path, class: 'btn btn-primary  ml-2 mr-0 text-light'%>
+			<%end%>
+    </div>
+  
+</div>
